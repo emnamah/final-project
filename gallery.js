@@ -1,17 +1,20 @@
 //   Gallery
-
 let galleryImages = document.querySelectorAll(".gallery-image");
 let getLatestOpenedImg;
 let windowWidth = window.innerWidth;
+
 if (galleryImages) {
   galleryImages.forEach(function(image, index) {
-    console.log("image", image);
-    image.onClick = function() {
+    image.onclick = function() {
+
       let getElementCss = window.getComputedStyle(image);
       let getFullImgUrl = getElementCss.getPropertyValue("background-image");
-      let getImgUrlPos = getFullImgUrl.split("/Projet%20final/Res/");
-      let setNewImgUrl = getImgUrlPos[1].replace('")', "");
+      console.log('hahaha', getFullImgUrl);
+      let getImgUrlPos = getFullImgUrl.split("Res/interface");
+      console.log('hihi', getImgUrlPos);
 
+      let setNewImgUrl = getImgUrlPos[1].replace('")', "").replace('/', '');
+console.log('hey', setNewImgUrl);
       getLatestOpenedImg = index + 1;
 
       let container = document.body;
@@ -23,17 +26,18 @@ if (galleryImages) {
       let newImg = document.createElement("img");
       newImgWindow.appendChild(newImg);
       newImg.setAttribute("src", "Res/" + setNewImgUrl);
-      newImg.setAttribute("id", "current-img" + setNewImgUrl);
 
-      newImg.onlaod = function() {
+      newImg.setAttribute("id", "current-img");
+
+      newImg.onload = function() {
         let imgWidth = this.width;
-        let calcImgToEdge = (windowWidth - imgWidth) / 2 - 80;
+        let calcImgToEdge = ((windowWidth - imgWidth) / 2) - 80;
 
         let newNextBtn = document.createElement("a");
         let btnNextText = document.createTextNode("Next");
         newNextBtn.appendChild(btnNextText);
         container.appendChild(newNextBtn);
-        newNextBtn.setAttribute("classe", "img-btn-next");
+        newNextBtn.setAttribute("class", "img-btn-next");
         newNextBtn.setAttribute("onclick", "changeImg(1)");
         newNextBtn.style.cssText = "right: " + calcImgToEdge + "px;";
 
@@ -41,9 +45,9 @@ if (galleryImages) {
         let btnPrevText = document.createTextNode("Prev");
         newPrevBtn.appendChild(btnPrevText);
         container.appendChild(newPrevBtn);
-        newPrevBtn.setAttribute("classe", "img-btn-prev");
+        newPrevBtn.setAttribute("class", "img-btn-prev");
         newPrevBtn.setAttribute("onclick", "changeImg(0)");
-        newPrevtBtn.style.cssText = "left: " + calcImgToEdge + "px;";
+        newPrevBtn.style.cssText = "left: " + calcImgToEdge + "px;";
       };
     };
   });
@@ -65,13 +69,13 @@ function changeImg(changeDir) {
   let calcNewImg;
   if (changeDir === 1) {
     calcNewImg = getLatestOpenedImg + 1;
-    if (calcNewImg > galleryImages.length) {
+    if (calcNewImg > 50) {
       calcNewImg = 1;
     }
   } else if (changeDir === 0) {
     calcNewImg = getLatestOpenedImg - 1;
     if (calcNewImg < 1) {
-      calcNewImg = galleryImages.length;
+      calcNewImg = 50;
     }
   }
 
@@ -80,14 +84,16 @@ function changeImg(changeDir) {
 
   getLatestOpenedImg = calcNewImg;
 
-  // newImg.onload = function() {
-  //   let imgWidth = this.width;
-  //   let calcImgToEdge = (windowWidth - imgWidth) / 2 - 80;
 
-  //   let nextBtn = document.querySelector(".img-btn-next");
-  //   nextBtn.style.cssText = "right:" + calcImgToEdge + "px;";
 
-  //   let prevBtn = document.querySelector(".img-btn-prev");
-  //   prevBtn.style.cssText = "left:" + calcImgToEdge + "px;";
-  // };
+  newImg.onload = function() {
+ let imgWidth = this.width;
+let calcImgToEdge = (windowWidth - imgWidth) / 2 - 80;
+
+let nextBtn = document.querySelector(".img-btn-next");
+nextBtn.style.cssText = "right:" + calcImgToEdge + "px;";
+
+let prevBtn = document.querySelector(".img-btn-prev");
+prevBtn.style.cssText = "left:" + calcImgToEdge + "px;";
+};
 }
