@@ -31,30 +31,30 @@
 
 #index-gallery .img1 {
   grid-area: img1;
-  background-image: url("Res/interface/image\ 1.jpg");
+  background-image: url("Res/interface/img1.jpg");
 }
 
 #index-gallery .img2 {
   grid-area: img2;
-  background-image: url("Res/interface/image\ 2.jpg");
+  background-image: url("Res/interface/img2.jpg");
 }
 #index-gallery .img3 {
   grid-area: img3;
-  background-image: url("Res/interface/image\ 3.jpg");
+  background-image: url("Res/interface/img3.jpg");
 }
 #index-gallery .img4 {
   grid-area: img4;
-  background-image: url("Res/interface/image\ 4.jpg");
+  background-image: url("Res/interface/img4.jpg");
 }
 
 #index-gallery .img5 {
   grid-area: img5;
-  background-image: url("Res/interface/image\ 5.jpg");
+  background-image: url("Res/interface/img5.jpg");
 }
 
 #index-gallery .img6 {
   grid-area: img6;
-  background-image: url("Res/interface/image\ 6.jpg");
+  background-image: url("Res/interface/img6.jpg");
 }
 
 /* Gallery image titles */
@@ -102,9 +102,9 @@
   align-items: center;
   z-index: 100;
 }
-.img-window img {
-  max-height: 100vh;
-  max-width: 100vw;
+#current-img {
+  height: 80vh;
+  width: 100vh
 }
 
 /* Next image */
