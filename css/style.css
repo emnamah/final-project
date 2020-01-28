@@ -206,6 +206,15 @@ textarea {
   max-height: 300px;
 }
 
+.alert {
+  text-align: center;
+  padding: 10px;
+  background: #7cb62f;
+  color: #f1f1f1;
+  margin-bottom: 10px;
+  display: none;
+}
+
 @media (min-aspect-ratio: 16/9) {
   #myVideo {
     width: 100%;
@@ -214,7 +223,7 @@ textarea {
 }
 @media (max-aspect-ratio: 16/9) {
   #myVideo {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
   }
 }
